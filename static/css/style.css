@@ -1,0 +1,310 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+
+/* HEADER */
+
+header {
+    background-color: #131921;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 38px;
+}
+
+
+header p {
+    font-size: 18px;
+}
+
+
+/* SEARCH */
+
+.search-box {
+    margin-top: 20px;
+}
+
+
+.search-box input {
+    width: 55%;
+    max-width: 600px;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px 0 0 6px;
+    outline: none;
+}
+
+
+.search-box button {
+    padding: 14px 20px;
+    border: none;
+    background-color: #ff9900;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0 6px 6px 0;
+}
+
+
+.search-box button:hover {
+    background-color: #ffad32;
+}
+
+
+/* MAIN */
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+}
+
+
+/* CATEGORIES */
+
+.categories {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+
+.categories button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: 0 2px 5px #ccc;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+
+.categories button:hover {
+    background-color: #e8e8e8;
+}
+
+
+/* PRODUCTS */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+    );
+    gap: 25px;
+}
+
+
+/* PRODUCT CARD */
+
+.product {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 10px #ccc;
+    transition: 0.2s;
+}
+
+
+.product:hover {
+    transform: translateY(-5px);
+}
+
+
+/* IMAGE */
+
+.product-image {
+    height: 150px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 80px;
+}
+
+
+/* PRICE */
+
+.old-price {
+    color: #777;
+    text-decoration: line-through;
+    margin-bottom: 5px;
+}
+
+
+.price {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 5px;
+}
+
+
+.discount {
+    color: green;
+    font-weight: bold;
+}
+
+
+/* STORE */
+
+.store {
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* BUY */
+
+.buy-button {
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 7px;
+
+    background-color: #ff9900;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.buy-button:hover {
+    background-color: #ffad32;
+}
+
+
+/* NO RESULTS */
+
+.no-results {
+    display: none;
+    text-align: center;
+    font-size: 20px;
+    color: #777;
+    margin-top: 30px;
+}
+
+
+/* DETAIL PAGE */
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 25px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+
+.product-detail {
+    background-color: white;
+    border-radius: 15px;
+    padding: 35px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 40px;
+
+    box-shadow: 0 3px 10px #ccc;
+}
+
+
+.detail-image {
+    min-height: 350px;
+
+    background-color: #f1f1f1;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 180px;
+}
+
+
+.detail-info h2 {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+
+.detail-price {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+
+.description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+}
+
+
+.detail-buy {
+    margin-top: 20px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    .search-box input {
+        width: 65%;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .product-detail {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .detail-image {
+        min-height: 250px;
+        font-size: 120px;
+    }
+
+    .detail-info h2 {
+        font-size: 28px;
+    }
+
+}

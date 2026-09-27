@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GarshCart</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+<body>
+
+
+<header>
+
+    <h1>🛒 GarshCart</h1>
+
+    <p>Simple shopping. Easy choices.</p>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products..."
+            onkeyup="searchProducts()"
+        >
+
+        <button onclick="searchProducts()">
+            🔍 Search
+        </button>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <h2>Categories</h2>
+
+    <div class="categories">
+
+        <button onclick="filterCategory('All')">
+            🏠 All
+        </button>
+
+        <button onclick="filterCategory('Gaming')">
+            🎮 Gaming
+        </button>
+
+        <button onclick="filterCategory('Electronics')">
+            📱 Electronics
+        </button>
+
+        <button onclick="filterCategory('Books')">
+            📚 Books
+        </button>
+
+        <button onclick="filterCategory('Fashion')">
+            👕 Fashion
+        </button>
+
+    </div>
+
+
+    <h2>Featured Products</h2>
+
+    <div class="products">
+
+        {% for product in products %}
+
+        <div
+            class="product"
+            data-name="{{ product.name }}"
+            data-category="{{ product.category }}"
+        >
+
+            <div class="product-image">
+                {{ product.emoji }}
+            </div>
+
+            <h3>
+                {{ product.name }}
+            </h3>
+
+            <p class="rating">
+                {{ "⭐" * product.rating }}
+            </p>
+
+            <p class="old-price">
+                ₹{{ product.old_price }}
+            </p>
+
+            <p class="price">
+                ₹{{ product.price }}
+            </p>
+
+            <p class="discount">
+                {{ product.discount }}
+            </p>
+
+            <p class="store">
+                Available on {{ product.store }}
+            </p>
+
+            <a
+                href="{{ product.link }}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <button class="buy-button">
+                    Buy on {{ product.store }}
+                </button>
+
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <p id="noResults" class="no-results">
+        No products found.
+    </p>
+
+</main>
+
+
+<script>
+
+function searchProducts() {
+
+    let search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    let products =
+        document.querySelectorAll(".product");
+
+    let found = false;
+
+    products.forEach(function(product) {
+
+        let name =
+            product.dataset.name.toLowerCase();
+
+        if (name.includes(search)) {
+
+            product.style.display = "block";
+            found = true;
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById("noResults").style.display =
+        found ? "none" : "block";
+}
+
+
+function filterCategory(category) {
+
+    let products =
+        document.querySelectorAll(".product");
+
+    let found = false;
+
+    products.forEach(function(product) {
+
+        if (
+            category === "All" ||
+            product.dataset.category === category
+        ) {
+
+            product.style.display = "block";
+            found = true;
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById("noResults").style.display =
+        found ? "none" : "block";
+}
+
+</script>
+
+
+</body>
+
+</html>

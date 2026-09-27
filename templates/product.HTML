@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ product.name }} - GarshCart</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+<body>
+
+
+<header>
+
+    <h1>🛒 GarshCart</h1>
+
+    <p>Simple shopping. Easy choices.</p>
+
+</header>
+
+
+<main>
+
+    <a
+        href="{{ url_for('home') }}"
+        class="back-button"
+    >
+        ← Back to GarshCart
+    </a>
+
+
+    <div class="product-detail">
+
+
+        <div class="detail-image">
+            {{ product.emoji }}
+        </div>
+
+
+        <div class="detail-info">
+
+            <p class="category">
+                {{ product.category }}
+            </p>
+
+            <h2>
+                {{ product.name }}
+            </h2>
+
+            <p class="rating">
+                {{ "⭐" * product.rating }}
+            </p>
+
+            <p class="old-price">
+                ₹{{ product.old_price }}
+            </p>
+
+            <p class="detail-price">
+                ₹{{ product.price }}
+            </p>
+
+            <p class="discount">
+                {{ product.discount }}
+            </p>
+
+            <p class="description">
+                {{ product.description }}
+            </p>
+
+            <p class="store">
+                Available on {{ product.store }}
+            </p>
+
+            <a
+                href="{{ product.link }}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <button class="buy-button detail-buy">
+                    Buy on {{ product.store }}
+                </button>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+</body>
+
+</html>
